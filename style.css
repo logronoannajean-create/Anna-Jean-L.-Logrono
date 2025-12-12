@@ -1,0 +1,159 @@
+
+:root {
+    --primary: #d08bff;       /* Light purple */
+    --primary-dark: #a455e0;  /* Darker purple */
+    --accent: #ff7eb3;        /* Pink */
+    --bg: #ffffff;            /* White */
+    --text: #4a4568;          /* Soft dark purple */
+    --shadow: rgba(0,0,0,0.08);
+}
+
+body.dark {
+    --bg: #1a1028;
+    --text: #f4dfff;
+    --primary: #c48bff;
+    --accent: #ff95c8;
+    --shadow: rgba(255,255,255,0.1);
+}
+
+/* ================== RESET ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    transition: 0.4s ease;
+}
+
+/* ================== FLOATING BLOBS ================== */
+.blob {
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, var(--primary), var(--accent));
+    opacity: 0.22;
+    filter: blur(12px);
+    border-radius: 50%;
+    animation: blobFloat 10s infinite alternate ease-in-out;
+    z-index: -10;
+}
+
+.blob:nth-child(1) {
+    top: 10%;
+    left: 5%;
+    animation-duration: 14s;
+}
+
+.blob:nth-child(2) {
+    bottom: 12%;
+    right: 10%;
+    animation-duration: 18s;
+}
+
+.blob:nth-child(3) {
+    top: 50%;
+    left: 70%;
+    animation-duration: 20s;
+}
+
+@keyframes blobFloat {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(-40px, 40px) scale(1.1); }
+}
+
+/* ================== HEADER ================== */
+header {
+    width: 100%;
+    padding: 20px 40px;
+    background: var(--primary);
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--accent);
+    box-shadow: 0 4px 15px var(--shadow);
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Dark Mode Button */
+.toggle-btn {
+    background: white;
+    color: var(--primary);
+    border: none;
+    padding: 10px 18px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+body.dark .toggle-btn {
+    background: var(--primary-dark);
+    color: white;
+}
+
+/* ================== SECTIONS ================== */
+section {
+    padding: 100px 50px;
+    margin-top: 80px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+section.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: var(--bg);
+    padding: 40px;
+    border-radius: 16px;
+    border-left: 6px solid var(--accent);
+    box-shadow: 0 5px 25px var(--shadow);
+    transition: 0.4s ease;
+}
+
+h2 {
+    color: var(--primary-dark);
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* ================== PROFILE ================== */
+.profile {
+    text-align: center;
+}
+
+.profile img {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid var(--accent);
+    box-shadow: 0 5px 20px
+}

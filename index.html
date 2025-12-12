@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Jean Logrono | Portfolio</title>
+
+    <!-- ICONS (Social Media) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* ========= GLOBAL RESET ========= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            background: #ffffff;
+            color: #003366;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            transition: 0.5s ease;
+        }
+
+        /* ========= DARK MODE ========= */
+        body.dark {
+            background: #0a0a0a;
+            color: #e6e6e6;
+        }
+
+        body.dark .container {
+            background: #1a1a1a;
+            border-left-color: #3399ff;
+        }
+
+        body.dark header {
+            background: #002f5c;
+        }
+
+        body.dark footer {
+            background: #002f5c;
+        }
+
+        /* ========= FLOATING PARTICLES ========= */
+        .particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: #5fa8ff;
+            border-radius: 50%;
+            animation: floatUp 10s infinite linear;
+            opacity: 0.5;
+            z-index: -10;
+        }
+
+        @keyframes floatUp {
+            from { transform: translateY(100vh) scale(0.5); }
+            to { transform: translateY(-10vh) scale(1); }
+        }
+
+        /* Generate 30 random particles */
+        .particle:nth-child(odd) { animation-duration: 12s; background: #99ccff; }
+        .particle:nth-child(even) { animation-duration: 15s; background: #3385ff; }
+
+        /* ========= FLOATING SHAPES ========= */
+        .blob {
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #5fa8ff, #003e7c);
+            opacity: 0.25;
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out alternate;
+            z-index: -2;
+        }
+
+        .blob:nth-child(1) { top: 10%; left: 5%; animation-duration: 14s; }
+        .blob:nth-child(2) { bottom: 10%; right: 10%; animation-duration: 16s; }
+        .blob:nth-child(3) { top: 50%; left: 70%; animation-duration: 18s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-40px) translateX(40px); }
+        }
+
+        /* ========= HEADER ========= */
+        header {
+            width: 100%;
+            background: #003e7c;
+            color: white;
+            padding: 20px 40px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideDown 1s ease;
+        }
+
+        @keyframes slideDown {
+            from { top: -80px; }
+            to { top: 0; }
+        }
+
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Dark Mode Button */
+        .toggle-btn {
+            background: white;
+            color: #003e7c;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        body.dark .toggle-btn {
+            background: #003e7c;
+            color: white;
+        }
+
+        /* ========= SECTIONS ========= */
+        section {
+            padding: 100px 50px;
+            margin-top: 80px;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: 1s ease;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            border-left: 6px solid #0059b3;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            transition: 0.4s ease;
+        }
+
+        h2 {
+            color: #0059b3;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        body.dark h2 {
+            color: #4dabff;
+        }
+
+        /* ========= PROFILE ========= */
+        .profile {
+            text-align: center;
+        }
+
+        .profile img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #0059b3;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .typing {
+            font-size: 22px;
+            font-weight: bold;
+            color: #003e7c;
+            margin-top: 15px;
+            height: 35px;
+        }
+
+        body.dark .typing {
+            color: #99ccff;
+        }
+
+        /* ========= DOWNLOAD RESUME BUTTON ========= */
+        .resume-btn {
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #0059b3;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            display: inline-block;
+        }
+
+        .resume-btn:hover {
+            background: #003e7c;
+        }
+
+        /* ========= SOCIAL MEDIA ICONS ========= */
+        .social {
+            margin-top: 20px;
+        }
+
+        .social a {
+            margin: 0 10px;
+            font-size: 26px;
+            color: #0059b3;
+        }
+
+        .social a:hover {
+            color: #003e7c;
+        }
+
+        /* ========= SLIDESHOW ========= */
+        .slideshow {
+            width: 60%;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            width: 300%;
+            animation: slide 25s infinite;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            33% { transform: translateX(-100%); }
+            66% { transform: translateX(-200%); }
+            100% { transform: translateX(0); }
+        }
+
+        /* ========= TIMELINE ========= */
+        .timeline {
+            border-left: 4px solid #0059b3;
+            padding-left: 20px;
+        }
+
+        .timeline div {
+            margin-bottom: 20px;
+            padding-left: 10px;
+        }
+
+        .timeline span {
+            font-weight: bold;
+            color: #003e7c;
+        }
+
+        body.dark .timeline span { color: #4dabff; }
+
+        /* ========= CONTACT FORM ========= */
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 6px;
+            border: 1px solid #0059b3;
+            font-size: 16px;
+        }
+
+        form button {
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: #0059b3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        form button:hover {
+            background: #003e7c;
+        }
+
+        /* ========= FOOTER ========= */
+        footer {
+            text-align: center;
+            background: #003e7c;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FLOATING PARTICLES (30) -->
+    <script>
+        for (let i = 0; i < 30; i++) {
+            const p = document.createElement("div");
+            p.classList.add("particle");
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.animationDelay = Math.random() * 10 + "s";
+            document.body.appendChild(p);
+        }
+    </script>
+
+    <!-- FLOATING SHAPES -->
+    <div class="blob"></div>
+    <div class="blob"></div>
+    <div class="blob"></div>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Anna Jean Logrono</h1>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#seminars">Seminars</a>
+            <a href="#achievements">Achievements</a>
+            <a href="#experience">Timeline</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <button class="toggle-btn" onclick="toggleDark()">Dark Mode</button>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+        <div class="container profile">
+            <img src="anna.jpg" alt="anna.jpg">
+
+            <div class="typing" id="typing"></div>
+
+            <a class="resume-btn" href="resume.pdf" download>Download Résumé</a>
+
+            <div class="social">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+
+            <p style="margin-top:20px;">
+                I am <b>Anna Jean Logrono</b>, 25 years old from Inabanga, Bohol.  
+                I study <b>BS Information Technology</b> at  
+                <b>Inabanga College of Arts and Sciences</b>.
+            </p>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+        <div class="container">
+            <h2>My Skills</h2>
+            <ul>
+                <li>Bread and Pastry Production NC II</li>
+                <li>Arduino Workshop</li>
+                <li>Dedicated member of PFC</li>
+                <li>Medical Team member</li>
+                <li>BLS Training</li>
+                <li>Leadership Training</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- TIMELINE (SEMINARS + EXPERIENCE) -->
+    <section id="experience">
+        <div class="container">
+            <h2>Experience Timeline</h2>
+
+            <div class="timeline">
+                <div>
+                    <span>2020-2021 — Production Operator</span><br>
+                    Minibea Mitsumi Corporation
+                </div>
+
+                <div>
+                    <span>2022 — Sanitary Technician</span><br>
+                    FDMH (Cydem Agency)
+                </div>
+
+                <h2 style="margin-top:30px;">Seminars</h2>
+
+                <div>
+                    <span>Mental Health Awareness</span>
+                </div>
+                <div>
+                    <span>Leadership Training</span>
+                </div>
+                <div>
+                    <span>Digital Wellness</span>
+                </div>
+                <div>
+                    <span>Intellectual Property Awareness</span>
+                </div>
+                <div>
+                    <span>Self Love & Healing</span>
+                </div>
+                <div>
+                    <span>Choices that Shape Us</span>
+                </div>
+                <div>
+                    <span>Lines that Protect, Bridges that Connect</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+        <div class="container">
+            <h2>Achievements</h2>
+            <p>
+                🏆 Champion – Best Arduino Project  
+                <b>Automated Water Level Detector with SMS Warning (GSM)</b>
+            </p>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+
+            <div class="slideshow">
+                <div class="slides">
+                    <img src="arduino.jpg">
+                    <img src="pfc.jpg">
+                    <img src="tesda.jpg">
+                </div>
+            </div>
+
+            <p style="margin-top:10px;"></p>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Anna Jean Logrono | All Rights Reserved
+    </footer>
+
+    <!-- TYPING EFFECT -->
+    <script>
+        const text = "Aspiring IT Professional | Arduino Enthusiast | Fast Learner";
+        let index = 0;
+
+        function typeEffect() {
+            document.getElementById("typing").innerText = text.slice(0, index);
+            index++;
+            if (index <= text.length) {
+                setTimeout(typeEffect, 80);
+            }
+        }
+        typeEffect();
+
+        // REVEAL ON SCROLL
+        const sections = document.querySelectorAll("section");
+        const reveal = () => {
+            sections.forEach(sec => {
+                const top = sec.getBoundingClientRect().top;
+                if (top < window.innerHeight - 120) {
+                    sec.classList.add("show");
+                }
+            });
+        };
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // DARK MODE TOGGLE
+        function toggleDark() {
+            document.body.classList.toggle("dark");
+        }
+    </script>
+
+</body>
+</html>
